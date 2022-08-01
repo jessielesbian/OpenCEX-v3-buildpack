@@ -51,7 +51,7 @@ mkdir ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
 echo "Publishing OpenCEX v3.0 core..."
-dotnet publish OpenCEX_v3 --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true -p:PublishReadyToRunComposite=true --self-contained
+dotnet publish OpenCEX_v3 --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
 echo "Publishing OpenCEX v3.0 authentication plugin..."
 dotnet publish OpenCEX.Authentication --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication --configuration ${BUILD_CONFIGURATION} --no-self-contained
 if [ -f ${BUILD_DIR}/Procfile ]; then
