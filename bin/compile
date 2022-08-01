@@ -47,6 +47,7 @@ fi
 
 
 export NUGET_PACKAGES="${CACHE_DIR}/nuget/cache"
+mkdir ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
 echo "Publishing OpenCEX v3.0 core..."
