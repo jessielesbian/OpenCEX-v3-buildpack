@@ -53,7 +53,7 @@ mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
 echo "Publishing OpenCEX v3.0 core..."
 dotnet publish OpenCEX_v3 --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
 echo "Publishing OpenCEX v3.0 authentication plugin..."
-dotnet publish OpenCEX.Authentication --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
+dotnet publish OpenCEX.Authentication --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 --self-contained
 ls ${BUILD_DIR}/${OUTPUT_DIR}
 if [ -f ${BUILD_DIR}/Procfile ]; then
 	topic "WARNING"
