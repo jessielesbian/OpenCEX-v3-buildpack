@@ -45,29 +45,14 @@ if [ -f ${BUILD_DIR}/dotnet-tools.json ] || [ -f ${BUILD_DIR}/.config/dotnet-too
 	dotnet tool restore
 fi
 
-if [ -z ${PROJECT_FILE:-} ]; then
-	PROJECT_FILE=$(x=$(dirname $(find ${BUILD_DIR} -maxdepth 5 -iname Startup.cs -o -iname Program.cs -o -iname Program.fs | head -1)); while [[ "$x" =~ $BUILD_DIR ]] ; do find "$x" -maxdepth 1 -name *.fsproj -o -name *.csproj; x=`dirname "$x"`; done)
-fi
 
-topic "Project File"
-info $PROJECT_FILE
-
-if [ -z ${PROJECT_NAME:-} ]; then
-	PROJECT_NAME=$(basename ${PROJECT_FILE%.*})
-fi
-
-topic "Project Name"
-info $PROJECT_NAME
-
-if [ -n "$(cat $PROJECT_FILE | grep 'netcoreapp2.0')" ]; then
-	topic "WARNING"
-	info "For netcoreapp2.0 use https://github.com/jincod/dotnetcore-buildpack#v2.1.200" | indent
-	info "More info https://github.com/jincod/dotnetcore-buildpack/issues/44" | indent
-fi
 export NUGET_PACKAGES="${CACHE_DIR}/nuget/cache"
-
-info "publish ${PROJECT_FILE} for ${BUILD_CONFIGURATION} on ${OUTPUT_DIR}"
-dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64  --self-contained
+mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
+mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
+echo "Publishing OpenCEX v3.0 core..."
+dotnet publish OpenCEX --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
+echo "Publishing OpenCEX v3.0 authentication plugin..."
+dotnet publish OpenCEX.Authentication --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
 
 if [ -f ${BUILD_DIR}/Procfile ]; then
 	topic "WARNING"
@@ -75,7 +60,7 @@ if [ -f ${BUILD_DIR}/Procfile ]; then
 else
 	echo "Add web process to Procfile" | indent
 	cat << EOT >> ${BUILD_DIR}/Procfile
-web: cd \$HOME/heroku_output && ./${PROJECT_NAME}
+web: cd \$HOME/heroku_output && ./OpenCEX
 EOT
 fi
 
