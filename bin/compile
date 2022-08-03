@@ -54,6 +54,10 @@ echo "Publishing OpenCEX v3.0 core..."
 dotnet publish OpenCEX_v3 --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
 echo "Publishing OpenCEX v3.0 authentication plugin..."
 dotnet publish OpenCEX.Authentication --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication --configuration ${BUILD_CONFIGURATION} --no-self-contained
+echo "Publishing OpenCEX v3.0 trading plugin..."
+dotnet publish OpenCEX.Trading --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_trading --configuration ${BUILD_CONFIGURATION} --no-self-contained
+echo "Publishing OpenCEX v3.0 ethereum deposit manager plugin..."
+dotnet publish OpenCEX.Deposits.Ethereum --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_deposits --configuration ${BUILD_CONFIGURATION} --no-self-contained
 if [ -f ${BUILD_DIR}/Procfile ]; then
 	topic "WARNING"
 	echo "Be careful with custom Procfile" | indent
