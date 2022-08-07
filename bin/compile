@@ -48,8 +48,13 @@ fi
 
 export NUGET_PACKAGES="${CACHE_DIR}/nuget/cache"
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}
+echo "Downloading configuration files..."
+wget -O config.zip ${OpenCEX_configurl}
+unzip config.zip -d ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
+mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_trading
+mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_deposits
 echo "Publishing OpenCEX v3.0 core..."
 dotnet publish OpenCEX_v3 --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
 echo "Publishing OpenCEX v3.0 authentication plugin..."
