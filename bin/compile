@@ -52,7 +52,7 @@ echo "Downloading configuration files..."
 wget -O config.zip ${OpenCEX_configurl}
 mkdir OpenCEX_ConfigExtract
 unzip config.zip "${OpenCEX_ConfigPath}/*" -d OpenCEX_ConfigExtract
-mv "OpenCEX_ConfigExtract/${OpenCEX_ConfigPath}/*" ${BUILD_DIR}/${OUTPUT_DIR}
+mv "OpenCEX_ConfigExtract/${OpenCEX_ConfigPath}/" ${BUILD_DIR}/${OUTPUT_DIR}
 ls ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
