@@ -60,7 +60,7 @@ mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_trading
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_deposits
 echo "Publishing OpenCEX v3.0 core..."
-dotnet publish OpenCEX --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --runtime linux-x64 -p:PublishReadyToRun=true --self-contained
+dotnet publish OpenCEX --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} -r linux-x64 -p:RuntimeIdentifier=linux-x64 -p:PublishReadyToRun=true --self-contained
 echo "Publishing OpenCEX v3.0 authentication plugin..."
 dotnet publish OpenCEX.Authentication --output ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication --configuration ${BUILD_CONFIGURATION} --no-self-contained
 echo "Publishing OpenCEX v3.0 trading plugin..."
