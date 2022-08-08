@@ -50,7 +50,7 @@ export NUGET_PACKAGES="${CACHE_DIR}/nuget/cache"
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}
 echo "Downloading configuration files..."
 wget -O config.zip ${OpenCEX_configurl}
-unzip config.zip -d ${BUILD_DIR}/${OUTPUT_DIR}
+unzip config.zip "${OpenCEX_ConfigPath}" -d ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_trading
