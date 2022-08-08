@@ -53,6 +53,7 @@ wget -O config.zip ${OpenCEX_configurl}
 ln -s ${BUILD_DIR}/${OUTPUT_DIR} ${OpenCEX_ConfigPath}
 unzip config.zip "${OpenCEX_ConfigPath}/*" -d OpenCEX_ConfigExtract
 rm -r ${OpenCEX_ConfigPath}
+echo "here"
 ls ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
