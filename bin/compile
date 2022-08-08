@@ -54,7 +54,7 @@ mkdir OpenCEX_ConfigExtract
 ln -s ${BUILD_DIR}/${OUTPUT_DIR} OpenCEX_ConfigExtract/${OpenCEX_ConfigPath}
 unzip config.zip "${OpenCEX_ConfigPath}/*" -d OpenCEX_ConfigExtract
 rm OpenCEX_ConfigExtract/${OpenCEX_ConfigPath}
-rm OpenCEX_ConfigExtract
+rm -r OpenCEX_ConfigExtract
 ls ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins/OpenCEX_authentication
