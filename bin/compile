@@ -52,7 +52,6 @@ echo "Downloading configuration files..."
 wget -O config.zip ${OpenCEX_configurl}
 ln -s ${BUILD_DIR}/${OUTPUT_DIR} ${OpenCEX_ConfigPath}
 unzip config.zip "${OpenCEX_ConfigPath}/*" -d OpenCEX_ConfigExtract
-rm ${OpenCEX_ConfigPath}
 echo "here"
 ls ${BUILD_DIR}/${OUTPUT_DIR}
 mkdir ${BUILD_DIR}/${OUTPUT_DIR}/plugins
